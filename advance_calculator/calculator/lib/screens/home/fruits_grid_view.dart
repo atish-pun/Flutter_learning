@@ -90,13 +90,14 @@ class _GridViewState extends State<GridViewList> {
                           height: 9.5,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding:
+                              const EdgeInsets.only(right: 12.0, left: 12.0),
                           child: Align(
                             alignment: Alignment.center,
                             child: InkWell(
                               child: Container(
-                                height: 22,
-                                width: 29,
+                                height: 23,
+                                width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                     color: Colors.blue[800],
                                     boxShadow: [
@@ -105,11 +106,11 @@ class _GridViewState extends State<GridViewList> {
                                           blurRadius: 4.4,
                                           offset: Offset.zero)
                                     ],
-                                    borderRadius: BorderRadius.circular(6)),
+                                    borderRadius: BorderRadius.circular(4)),
                                 child: Icon(
                                   FontAwesomeIcons.shoppingCart,
                                   color: Colors.white,
-                                  size: 11,
+                                  size: 12,
                                 ),
                               ),
                               onTap: () {},
