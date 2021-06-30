@@ -1,4 +1,5 @@
 import 'package:calculator/models/fruits_model.dart';
+import 'package:calculator/screens/home/fruits_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Fruits_list_details.dart';
@@ -11,6 +12,7 @@ class ListWork extends StatefulWidget {
 }
 
 class _ListWorkState extends State<ListWork> {
+  var index;
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -19,6 +21,20 @@ class _ListWorkState extends State<ListWork> {
 
     // List<String> data = List.generate(10, (index) => ("atish").toString());
     return Scaffold(
+      floatingActionButton: Container(
+        width: 50,
+        child: FloatingActionButton(
+          backgroundColor: Colors.blue[800],
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => GridViewList()));
+          },
+          child: Icon(
+            Icons.grid_view,
+            size: 22,
+          ),
+        ),
+      ),
       appBar: AppBar(
         title: Text(
           "Fruits",

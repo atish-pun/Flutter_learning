@@ -1,3 +1,4 @@
+import 'package:calculator/screens/home/list_view.dart';
 import 'package:calculator/screens/home/login.dart';
 import 'package:calculator/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class Calculator extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: <String, WidgetBuilder>{
-        "/": (context) => SplashScreen(),
+        "/": (context) => ListWork(),
         "/home_screen": (context) => HomeScreen()
       },
     );
