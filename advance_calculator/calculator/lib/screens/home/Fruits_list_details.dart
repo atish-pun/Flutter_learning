@@ -24,10 +24,13 @@ class FruitsDetails extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(top: 7),
               height: MediaQuery.of(context).size.height * 0.24,
-              child: Image(
-                image: NetworkImage(
-                    "${fruits!.image ?? "https://static.thenounproject.com/png/340719-200.png"}",
-                    scale: 3.1),
+              child: Hero(
+                tag: fruits!.name.toString(),
+                child: Image(
+                  image: NetworkImage(
+                      "${fruits!.image ?? "https://static.thenounproject.com/png/340719-200.png"}",
+                      scale: 3.1),
+                ),
               ),
             ),
             CarouselSlider(

@@ -96,11 +96,14 @@ class _GridViewState extends State<GridViewList> {
                               left: MediaQuery.of(context).size.width * 0.01,
                               right: MediaQuery.of(context).size.width * 0.01),
                           height: MediaQuery.of(context).size.height * 0.15,
-                          child: Image.network(
-                            "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}",
-                            fit: BoxFit.contain,
-                            height: MediaQuery.of(context).size.height * 0.15,
-                            width: MediaQuery.of(context).size.height * 0.15,
+                          child: Hero(
+                            tag: Fruits.fruits[index].name.toString(),
+                            child: Image.network(
+                              "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}",
+                              fit: BoxFit.contain,
+                              height: MediaQuery.of(context).size.height * 0.15,
+                              width: MediaQuery.of(context).size.height * 0.15,
+                            ),
                           ),
                         ),
                         SizedBox(

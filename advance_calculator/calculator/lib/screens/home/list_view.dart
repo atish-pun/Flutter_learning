@@ -21,6 +21,7 @@ class _ListWorkState extends State<ListWork> {
 
     // List<String> data = List.generate(10, (index) => ("atish").toString());
     return Scaffold(
+      drawer: Drawer(),
       floatingActionButton: Container(
         width: 50,
         child: FloatingActionButton(
@@ -72,11 +73,14 @@ class _ListWorkState extends State<ListWork> {
                     },
                     dense: true,
                     visualDensity: VisualDensity(horizontal: 0, vertical: -2),
-                    leading: CircleAvatar(
-                      radius: 17,
-                      backgroundImage: NetworkImage(
-                          "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}"),
-                      backgroundColor: Colors.transparent,
+                    leading: Hero(
+                      tag: Fruits.fruits[index].name.toString(),
+                      child: CircleAvatar(
+                        radius: 17,
+                        backgroundImage: NetworkImage(
+                            "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}"),
+                        backgroundColor: Colors.transparent,
+                      ),
                     ),
                     title: Text(
                       "${Fruits.fruits[index].name ?? "....."}",
