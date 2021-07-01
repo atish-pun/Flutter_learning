@@ -21,6 +21,10 @@ class FruitsProperties {
       this.imageSlider});
 }
 
+// class Fruits {
+//   final List<FruitsProperties> fruits;
+//   Fruits(this.fruits);
+// }
 class Fruits {
   static final fruits = [
     FruitsProperties(

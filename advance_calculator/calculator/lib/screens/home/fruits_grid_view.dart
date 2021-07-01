@@ -18,8 +18,51 @@ class _GridViewState extends State<GridViewList> {
       appBar: AppBar(
         title: Text(
           "Fruits",
-          style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+          ),
         ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height * 0.009,
+                right: MediaQuery.of(context).size.height * 0.019),
+            child: Stack(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.098,
+                  width: MediaQuery.of(context).size.width * 0.098,
+                  child: Center(
+                    child: Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 23,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 13,
+                  top: 5,
+                  child: Container(
+                      height: 18,
+                      width: 18,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey[900],
+                      ),
+                      child: Center(
+                        child: Text("10",
+                            style: TextStyle(
+                              letterSpacing: 0.8,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10,
+                            )),
+                      )),
+                )
+              ],
+            ),
+          )
+        ],
       ),
       body: Container(
         margin: EdgeInsets.all(
@@ -27,7 +70,8 @@ class _GridViewState extends State<GridViewList> {
         ),
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 0.81,
+                childAspectRatio:
+                    MediaQuery.of(context).size.aspectRatio * 1.66,
                 crossAxisCount: 2,
                 crossAxisSpacing: 5.0,
                 mainAxisSpacing: 5.0),
@@ -47,14 +91,20 @@ class _GridViewState extends State<GridViewList> {
                   child: Container(
                     child: Column(
                       children: [
-                        Image.network(
-                          "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}",
-                          fit: BoxFit.contain,
+                        Container(
+                          padding: EdgeInsets.only(
+                              left: MediaQuery.of(context).size.width * 0.01,
+                              right: MediaQuery.of(context).size.width * 0.01),
                           height: MediaQuery.of(context).size.height * 0.15,
-                          width: MediaQuery.of(context).size.height * 0.15,
+                          child: Image.network(
+                            "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}",
+                            fit: BoxFit.contain,
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            width: MediaQuery.of(context).size.height * 0.15,
+                          ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: MediaQuery.of(context).size.height * 0.02,
                         ),
                         Center(
                           child: Row(
@@ -87,7 +137,7 @@ class _GridViewState extends State<GridViewList> {
                           ),
                         ),
                         SizedBox(
-                          height: 9.5,
+                          height: MediaQuery.of(context).size.height * 0.014,
                         ),
                         Padding(
                           padding:
@@ -107,10 +157,25 @@ class _GridViewState extends State<GridViewList> {
                                           offset: Offset.zero)
                                     ],
                                     borderRadius: BorderRadius.circular(4)),
-                                child: Icon(
-                                  FontAwesomeIcons.shoppingCart,
-                                  color: Colors.white,
-                                  size: 12,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      FontAwesomeIcons.shoppingCart,
+                                      color: Colors.white,
+                                      size: 11.4,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "Add",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
                                 ),
                               ),
                               onTap: () {},
