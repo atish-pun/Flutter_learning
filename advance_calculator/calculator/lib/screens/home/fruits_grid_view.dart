@@ -11,11 +11,20 @@ class GridViewList extends StatefulWidget {
 }
 
 class _GridViewState extends State<GridViewList> {
+  int cartValue = 0;
+  String cart = "Add";
+  void cartChange() {
+    setState(() {
+      cartValue++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        brightness: Brightness.dark,
         title: Text(
           "Fruits",
           style: TextStyle(
@@ -51,7 +60,7 @@ class _GridViewState extends State<GridViewList> {
                         color: Colors.grey[900],
                       ),
                       child: Center(
-                        child: Text("10",
+                        child: Text(cartValue.toString(),
                             style: TextStyle(
                               letterSpacing: 0.8,
                               fontWeight: FontWeight.bold,
@@ -172,7 +181,7 @@ class _GridViewState extends State<GridViewList> {
                                       width: 10,
                                     ),
                                     Text(
-                                      "Add",
+                                      cart,
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 13,
@@ -181,7 +190,9 @@ class _GridViewState extends State<GridViewList> {
                                   ],
                                 ),
                               ),
-                              onTap: () {},
+                              onTap: () {
+                                cartChange();
+                              },
                             ),
                           ),
                         )

@@ -6,12 +6,14 @@ class FruitsProperties {
   final Color? color;
   final String? fruitColor;
   final int? price;
+  final int? id;
   final String? scientificName;
   final String? description;
   final List<String>? imageSlider;
 
   FruitsProperties(
       {this.name,
+      this.id,
       this.image,
       this.color,
       this.price,
@@ -28,6 +30,7 @@ class FruitsProperties {
 class Fruits {
   static final fruits = [
     FruitsProperties(
+        id: 1,
         name: "Mango",
         image:
             "https://khetifood.com/image/cache/catalog/kheti_mango-500x500.jpg",
@@ -44,6 +47,7 @@ class Fruits {
           "https://images.livemint.com/rf/Image-621x414/LiveMint/Period2/2018/05/05/Photos/Processed/mangoes1-k22F--621x414@LiveMint.jpg"
         ]),
     FruitsProperties(
+        id: 2,
         name: "Apple",
         image:
             "https://ezsai.com/wp-content/uploads/2021/02/firefox_2018-07-10_07-50-11.png",

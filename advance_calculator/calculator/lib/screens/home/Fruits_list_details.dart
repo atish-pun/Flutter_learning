@@ -12,6 +12,7 @@ class FruitsDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        brightness: Brightness.dark,
         title: Text(
           "${fruits!.name ?? "No fruit"}",
           style: TextStyle(

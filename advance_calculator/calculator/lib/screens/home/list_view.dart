@@ -15,13 +15,144 @@ class _ListWorkState extends State<ListWork> {
   var index;
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.blue.shade800,
-        statusBarIconBrightness: Brightness.light));
-
     // List<String> data = List.generate(10, (index) => ("atish").toString());
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.blue[800],
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 9),
+                child: UserAccountsDrawerHeader(
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                color: Colors.grey.shade300, width: 0.3))),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundImage: AssetImage("assets/images/Atish.jpg"),
+                    ),
+                    accountName: Text(
+                      "Atish pun",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.9,
+                          fontSize: 15),
+                    ),
+                    accountEmail: Text(
+                      "punatish16@gmail.com",
+                      style: TextStyle(letterSpacing: 0.8, fontSize: 13),
+                    )),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 4),
+                child: Column(
+                  children: [
+                    ListTile(
+                      horizontalTitleGap: -1,
+                      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
+                      leading: Icon(
+                        Icons.home,
+                        color: Colors.blue[100],
+                        size: 21,
+                      ),
+                      title: Text(
+                        "Home",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[100],
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      horizontalTitleGap: -1,
+                      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
+                      leading: Icon(
+                        Icons.read_more_rounded,
+                        color: Colors.blue[100],
+                        size: 21,
+                      ),
+                      title: Text(
+                        "About us",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[100],
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      horizontalTitleGap: -1,
+                      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
+                      leading: Icon(
+                        Icons.chat,
+                        color: Colors.blue[100],
+                        size: 21,
+                      ),
+                      title: Text("Message",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue[100],
+                          )),
+                    ),
+                    ListTile(
+                      horizontalTitleGap: -1,
+                      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
+                      leading: Icon(
+                        Icons.call,
+                        color: Colors.blue[100],
+                        size: 21,
+                      ),
+                      title: Text("Conatct Us",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue[100],
+                          )),
+                    ),
+                    ListTile(
+                      horizontalTitleGap: -1,
+                      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
+                      leading: Icon(
+                        Icons.support_agent,
+                        color: Colors.blue[100],
+                        size: 21,
+                      ),
+                      title: Text("Support",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue[100],
+                          )),
+                    ),
+                    ListTile(
+                      horizontalTitleGap: -1,
+                      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
+                      leading: Icon(
+                        Icons.help_center,
+                        color: Colors.blue[100],
+                        size: 21,
+                      ),
+                      title: Text("Help",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue[100],
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Container(),
+              ),
+              Text(
+                "Powered by Atish pun",
+                style: TextStyle(color: Colors.blue[100], fontSize: 13),
+              ),
+              SizedBox(
+                height: 10,
+              )
+            ],
+          ),
+        ),
+      ),
       floatingActionButton: Container(
         width: 50,
         child: FloatingActionButton(
@@ -37,6 +168,7 @@ class _ListWorkState extends State<ListWork> {
         ),
       ),
       appBar: AppBar(
+        brightness: Brightness.dark,
         title: Text(
           "Fruits",
           style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1),
