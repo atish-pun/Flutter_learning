@@ -15,7 +15,7 @@ class _ListWorkState extends State<ListWork> {
   var index;
   @override
   Widget build(BuildContext context) {
-    // List<String> data = List.generate(10, (index) => ("atish").toString());
+    // List<String> data = List.generate(10, (index) => card(Child:Text("atish")));
     return Scaffold(
       drawer: Drawer(
         child: Container(

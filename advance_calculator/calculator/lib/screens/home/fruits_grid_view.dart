@@ -13,10 +13,31 @@ class GridViewList extends StatefulWidget {
 class _GridViewState extends State<GridViewList> {
   int cartValue = 0;
   String cart = "Add";
+  List<dynamic> lists = [];
+  @override
+  void initState() {
+    callFruits();
+    super.initState();
+  }
+
   void cartChange() {
     setState(() {
       cartValue++;
     });
+  }
+
+  Future callFruits() async {
+    var fruitValue = await listData();
+    setState(() {
+      this.lists = fruitValue;
+    });
+  }
+
+  Future<dynamic> listData() {
+    Future<dynamic> fruitData = Future.delayed(Duration(seconds: 3), () {
+      return Fruits.fruits;
+    });
+    return fruitData;
   }
 
   @override
@@ -53,20 +74,23 @@ class _GridViewState extends State<GridViewList> {
                   left: 13,
                   top: 5,
                   child: Container(
-                      height: 18,
-                      width: 18,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey[900],
+                    height: 18,
+                    width: 18,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.grey[900],
+                    ),
+                    child: Center(
+                      child: Text(
+                        cartValue.toString(),
+                        style: TextStyle(
+                          letterSpacing: 0.8,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 10,
+                        ),
                       ),
-                      child: Center(
-                        child: Text(cartValue.toString(),
-                            style: TextStyle(
-                              letterSpacing: 0.8,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 10,
-                            )),
-                      )),
+                    ),
+                  ),
                 )
               ],
             ),
@@ -77,131 +101,166 @@ class _GridViewState extends State<GridViewList> {
         margin: EdgeInsets.all(
           MediaQuery.of(context).size.width * 0.04,
         ),
-        child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio:
-                    MediaQuery.of(context).size.aspectRatio * 1.66,
-                crossAxisCount: 2,
-                crossAxisSpacing: 5.0,
-                mainAxisSpacing: 5.0),
-            itemCount: Fruits.fruits.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FruitsDetails(
-                                fruits: Fruits.fruits[index],
-                              )));
-                },
-                child: Card(
-                  elevation: 5.0,
-                  child: Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.01,
-                              right: MediaQuery.of(context).size.width * 0.01),
-                          height: MediaQuery.of(context).size.height * 0.15,
-                          child: Hero(
-                            tag: Fruits.fruits[index].name.toString(),
-                            child: Image.network(
-                              "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}",
-                              fit: BoxFit.contain,
-                              height: MediaQuery.of(context).size.height * 0.15,
-                              width: MediaQuery.of(context).size.height * 0.15,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.02,
-                        ),
-                        Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "${Fruits.fruits[index].name ?? "....."}",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13,
-                                    letterSpacing: 0.9),
-                              ),
-                              Container(
-                                height: 10,
-                                child: VerticalDivider(
-                                    color: Colors.grey,
-                                    thickness: 1.2,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.017),
-                              ),
-                              Text(
-                                "\$${Fruits.fruits[index].price ?? "0.0"}" +
-                                    "/Kg",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12,
-                                    letterSpacing: 0.9),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.014,
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(right: 12.0, left: 12.0),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: InkWell(
-                              child: Container(
-                                height: 23,
-                                width: MediaQuery.of(context).size.width,
-                                decoration: BoxDecoration(
-                                    color: Colors.blue[800],
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.shade500,
-                                          blurRadius: 4.4,
-                                          offset: Offset.zero)
-                                    ],
-                                    borderRadius: BorderRadius.circular(4)),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(
-                                      FontAwesomeIcons.shoppingCart,
-                                      color: Colors.white,
-                                      size: 11.4,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      cart,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              onTap: () {
-                                cartChange();
-                              },
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+        child: lists.isEmpty
+            ? Center(
+                child: Container(
+                height: 26,
+                width: 26,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2.3,
+                  backgroundColor: Colors.grey[300],
                 ),
-              );
-            }),
+              ))
+            : RefreshIndicator(
+                backgroundColor: Colors.blue[700],
+                color: Colors.white,
+                strokeWidth: 1.2,
+                onRefresh: callFruits,
+                child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        childAspectRatio:
+                            MediaQuery.of(context).size.aspectRatio * 1.66,
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5.0,
+                        mainAxisSpacing: 5.0),
+                    itemCount: lists.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FruitsDetails(
+                                fruits: lists[index],
+                              ),
+                            ),
+                          );
+                        },
+                        child: Card(
+                          elevation: 5.0,
+                          child: Container(
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(
+                                      left: MediaQuery.of(context).size.width *
+                                          0.01,
+                                      right: MediaQuery.of(context).size.width *
+                                          0.01),
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.15,
+                                  child: Hero(
+                                    tag: Fruits.fruits[index].name.toString(),
+                                    child: Image.network(
+                                      "${lists[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}",
+                                      fit: BoxFit.contain,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.15,
+                                      width:
+                                          MediaQuery.of(context).size.height *
+                                              0.15,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "${lists[index].name ?? "....."}",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 13,
+                                            letterSpacing: 0.9),
+                                      ),
+                                      Container(
+                                        height: 10,
+                                        child: VerticalDivider(
+                                            color: Colors.grey,
+                                            thickness: 1.2,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.017),
+                                      ),
+                                      Text(
+                                        "\$${lists[index].price ?? "0.0"}" +
+                                            "/Kg",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 12,
+                                            letterSpacing: 0.9),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: MediaQuery.of(context).size.height *
+                                      0.014,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 12.0, left: 12.0),
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: InkWell(
+                                      child: Container(
+                                        height: 23,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.blue.shade100,
+                                                blurRadius: 3.5,
+                                              )
+                                            ],
+                                            border: Border.all(
+                                                color: Colors.blue.shade800,
+                                                width: 0.0),
+                                            borderRadius:
+                                                BorderRadius.circular(4)),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              FontAwesomeIcons.shoppingCart,
+                                              color: Colors.blue[800],
+                                              size: 11.4,
+                                            ),
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              cart,
+                                              style: TextStyle(
+                                                  color: Colors.blue[800],
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        cartChange();
+                                      },
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+              ),
       ),
     );
   }

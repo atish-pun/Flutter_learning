@@ -20,6 +20,9 @@ class Calculator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.blue.shade800,
+    ));
     return MaterialApp(
       theme: ThemeData(
           primaryColor: Colors.blue[800], primaryColorDark: Colors.blue[800]),
