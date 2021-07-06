@@ -1,3 +1,4 @@
+import 'package:calculator/screens/NavigationBar/BottomNav.dart';
 import 'package:calculator/screens/home/list_view.dart';
 import 'package:calculator/screens/home/login.dart';
 import 'package:calculator/screens/splash/splash_screen.dart';
@@ -29,7 +30,7 @@ class Calculator extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: <String, WidgetBuilder>{
-        "/": (context) => ListWork(),
+        "/": (context) => BottomNavBar(),
         "/home_screen": (context) => HomeScreen()
       },
     );

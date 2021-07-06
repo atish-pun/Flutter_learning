@@ -154,7 +154,7 @@ class _ListWorkState extends State<ListWork> {
         ),
       ),
       floatingActionButton: Container(
-        width: 50,
+        width: 42,
         child: FloatingActionButton(
           backgroundColor: Colors.blue[800],
           onPressed: () {
@@ -163,7 +163,7 @@ class _ListWorkState extends State<ListWork> {
           },
           child: Icon(
             Icons.grid_view,
-            size: 22,
+            size: 16,
           ),
         ),
       ),
@@ -171,7 +171,8 @@ class _ListWorkState extends State<ListWork> {
         brightness: Brightness.dark,
         title: Text(
           "Fruits",
-          style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1),
+          style: TextStyle(
+              fontSize: 19, fontWeight: FontWeight.bold, letterSpacing: 1),
         ),
       ),
       body: Container(
