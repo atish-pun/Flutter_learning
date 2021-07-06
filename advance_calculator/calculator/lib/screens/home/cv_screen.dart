@@ -30,7 +30,7 @@ class CvScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Container(
-        width: 42,
+        width: 44,
         child: FloatingActionButton(
           backgroundColor: Colors.blue[800],
           onPressed: () {

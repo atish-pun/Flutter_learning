@@ -30,18 +30,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[cIndex],
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(border: Border.all(style: BorderStyle.none)),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(14)),
         child: BottomNavigationBar(
           items: items,
-          elevation: 0.0,
+          // elevation: 0.0,
           currentIndex: cIndex,
           selectedItemColor: Colors.blue[800],
           unselectedFontSize: 13,
           selectedFontSize: 13,
           unselectedLabelStyle: TextStyle(color: Colors.grey[200]),
           selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-          backgroundColor: Colors.blue[50],
+          backgroundColor: Colors.blue[100],
           onTap: (index) {
             setState(() {
               cIndex = index;

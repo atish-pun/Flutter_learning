@@ -32,13 +32,11 @@ class Favorite extends StatelessWidget {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                     text: "To keep the track of any products you want,",
-                    style: TextStyle(color: Colors.black, fontSize: 9.8),
+                    style: TextStyle(color: Colors.black, fontSize: 10),
                     children: [
                       TextSpan(
-                          text: "\njust tap the favorite icon",
-                          style: TextStyle(
-                            textBaseline: TextBaseline.alphabetic,
-                          ))
+                        text: "\njust tap the favorite icon",
+                      )
                     ]),
               )
             ],

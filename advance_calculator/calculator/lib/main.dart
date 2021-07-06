@@ -1,7 +1,5 @@
 import 'package:calculator/screens/NavigationBar/BottomNav.dart';
-import 'package:calculator/screens/home/list_view.dart';
 import 'package:calculator/screens/home/login.dart';
-import 'package:calculator/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

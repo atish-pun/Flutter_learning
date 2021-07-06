@@ -262,7 +262,7 @@ class Fruits {
     FruitsProperties(
         name: "Coconut",
         image:
-            "https://groceries.khukuamin.com/wp-content/uploads/2021/04/3711-1.jpg",
+            "https://media.istockphoto.com/photos/coconut-with-half-and-leaves-on-white-background-picture-id543564492?k=6&m=543564492&s=612x612&w=0&h=y_gcTSg_kCPmNknaNqtFsTCb2cl3Th-kJc2tWGAoLkk=",
         color: Color(0xff4f2922),
         fruitColor: "Brown",
         scientificName: "Cocos nucifera",

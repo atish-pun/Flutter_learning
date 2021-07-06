@@ -8,8 +8,8 @@ import 'list_view.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-  TextEditingController emailTxt = TextEditingController();
-  TextEditingController passwordTxt = TextEditingController();
+  final TextEditingController emailTxt = TextEditingController();
+  final TextEditingController passwordTxt = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

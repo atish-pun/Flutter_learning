@@ -154,7 +154,7 @@ class _ListWorkState extends State<ListWork> {
         ),
       ),
       floatingActionButton: Container(
-        width: 42,
+        width: 44,
         child: FloatingActionButton(
           backgroundColor: Colors.blue[800],
           onPressed: () {
@@ -168,6 +168,7 @@ class _ListWorkState extends State<ListWork> {
         ),
       ),
       appBar: AppBar(
+        elevation: 0.0,
         brightness: Brightness.dark,
         title: Text(
           "Fruits",
@@ -179,7 +180,6 @@ class _ListWorkState extends State<ListWork> {
         color: Colors.grey[100],
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).size.width * 0.02,
-          bottom: MediaQuery.of(context).size.width * 0.03,
         ),
         child: ListView.builder(
             itemCount: Fruits.fruits.length,
@@ -188,7 +188,6 @@ class _ListWorkState extends State<ListWork> {
                 padding: EdgeInsets.only(
                   right: MediaQuery.of(context).size.width * 0.05,
                   left: MediaQuery.of(context).size.width * 0.05,
-                  bottom: MediaQuery.of(context).size.width * 0.008,
                 ),
                 child: Card(
                   elevation: 3,

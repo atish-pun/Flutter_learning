@@ -45,6 +45,7 @@ class _GridViewState extends State<GridViewList> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0.0,
         brightness: Brightness.dark,
         title: Text(
           "Fruits",
