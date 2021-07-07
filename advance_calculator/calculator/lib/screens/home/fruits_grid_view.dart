@@ -108,7 +108,7 @@ class _GridViewState extends State<GridViewList> {
                 height: 26,
                 width: 26,
                 child: CircularProgressIndicator(
-                  strokeWidth: 2.3,
+                  strokeWidth: 2.4,
                   backgroundColor: Colors.grey[300],
                 ),
               ))

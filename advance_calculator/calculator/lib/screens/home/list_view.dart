@@ -182,62 +182,61 @@ class _ListWorkState extends State<ListWork> {
           top: MediaQuery.of(context).size.width * 0.02,
         ),
         child: ListView.builder(
-            itemCount: Fruits.fruits.length,
-            itemBuilder: (context, index) {
-              return Container(
-                padding: EdgeInsets.only(
-                  right: MediaQuery.of(context).size.width * 0.05,
-                  left: MediaQuery.of(context).size.width * 0.05,
-                ),
-                child: Card(
-                  elevation: 3,
-                  color: Colors.blue[50],
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  child: ListTile(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FruitsDetails(
-                                    fruits: Fruits.fruits[index],
-                                  )));
-                    },
-                    dense: true,
-                    visualDensity: VisualDensity(horizontal: 0, vertical: -2),
-                    leading: Hero(
-                      tag: Fruits.fruits[index].name.toString(),
-                      child: CircleAvatar(
-                        radius: 17,
-                        backgroundImage: NetworkImage(
-                            "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}"),
-                        backgroundColor: Colors.transparent,
-                      ),
+          itemCount: Fruits.fruits.length,
+          itemBuilder: (context, index) {
+            return Container(
+              padding: EdgeInsets.only(
+                right: MediaQuery.of(context).size.width * 0.05,
+                left: MediaQuery.of(context).size.width * 0.05,
+              ),
+              child: Card(
+                elevation: 3,
+                color: Colors.blue[50],
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FruitsDetails(
+                                  fruits: Fruits.fruits[index],
+                                )));
+                  },
+                  dense: true,
+                  visualDensity: VisualDensity(horizontal: 0, vertical: -2),
+                  leading: Hero(
+                    tag: Fruits.fruits[index].name.toString(),
+                    child: CircleAvatar(
+                      radius: 17,
+                      backgroundImage: NetworkImage(
+                          "${Fruits.fruits[index].image ?? "https://static.thenounproject.com/png/340719-200.png"}"),
+                      backgroundColor: Colors.transparent,
                     ),
-                    title: Text(
-                      "${Fruits.fruits[index].name ?? "....."}",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                    ),
-                    subtitle: Text(
-                      "\$" + "${Fruits.fruits[index].price ?? "0.0"}" + "/Kg",
-                      style:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                    ),
-                    trailing: CircleAvatar(
-                        radius: 14,
-                        backgroundColor: Fruits.fruits[index].color,
-                        child: Text(
-                          Fruits.fruits[index].name.toString().substring(0, 1),
-                          style: TextStyle(
-                              color: Colors.blue[120],
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13),
-                        )),
                   ),
+                  title: Text(
+                    "${Fruits.fruits[index].name ?? "....."}",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
+                  subtitle: Text(
+                    "\$" + "${Fruits.fruits[index].price ?? "0.0"}" + "/Kg",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  ),
+                  trailing: CircleAvatar(
+                      radius: 14,
+                      backgroundColor: Fruits.fruits[index].color,
+                      child: Text(
+                        Fruits.fruits[index].name.toString().substring(0, 1),
+                        style: TextStyle(
+                            color: Colors.blue[120],
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13),
+                      )),
                 ),
-              );
-            }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

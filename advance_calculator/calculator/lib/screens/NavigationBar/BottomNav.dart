@@ -1,3 +1,4 @@
+import 'package:calculator/screens/home/Fetch_online/services/fetch_json.dart';
 import 'package:calculator/screens/home/cv_screen.dart';
 import 'package:calculator/screens/home/favorite_screen.dart';
 import 'package:calculator/screens/home/list_view.dart';
@@ -21,26 +22,30 @@ class _BottomNavBarState extends State<BottomNavBar> {
     BottomNavigationBarItem(
         icon: Icon(Icons.favorite), label: "Favorite", tooltip: "Favorite"),
     BottomNavigationBarItem(
+        icon: Icon(Icons.email), label: "Mail", tooltip: "Mail"),
+    BottomNavigationBarItem(
         icon: Icon(Icons.person), label: "Profile", tooltip: "Profile"),
   ];
   // "To keep the track of any products you want \n,just tap the favorite icon"
 
-  List<Widget> pages = [ListWork(), Favorite(), CvScreen()];
+  List<Widget> pages = [ListWork(), Favorite(), Mail(), CvScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[cIndex],
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(14)),
+        borderRadius: BorderRadius.all(Radius.circular(12)),
         child: BottomNavigationBar(
           items: items,
-          // elevation: 0.0,
           currentIndex: cIndex,
           selectedItemColor: Colors.blue[800],
           unselectedFontSize: 13,
+          iconSize: 21,
+          unselectedItemColor: Colors.grey[600],
           selectedFontSize: 13,
-          unselectedLabelStyle: TextStyle(color: Colors.grey[200]),
+          unselectedLabelStyle: TextStyle(color: Colors.red),
           selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+          type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.blue[100],
           onTap: (index) {
             setState(() {
