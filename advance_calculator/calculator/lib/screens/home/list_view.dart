@@ -1,4 +1,5 @@
 import 'package:calculator/models/fruits_model.dart';
+import 'package:calculator/screens/home/favorite_screen.dart';
 import 'package:calculator/screens/home/fruits_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -168,6 +169,20 @@ class _ListWorkState extends State<ListWork> {
         ),
       ),
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 6.2),
+            child: IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Favorite()));
+                },
+                icon: Icon(
+                  Icons.favorite,
+                  size: 22,
+                )),
+          )
+        ],
         elevation: 0.0,
         brightness: Brightness.dark,
         title: Text(

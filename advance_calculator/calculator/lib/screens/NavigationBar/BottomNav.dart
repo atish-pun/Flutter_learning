@@ -1,8 +1,9 @@
-import 'package:calculator/screens/home/Fetch_online/services/fetch_json.dart';
+import 'package:calculator/screens/home/Fetch_online/covid_infected.dart';
+import 'package:calculator/screens/home/Fetch_online/fetch_json.dart';
 import 'package:calculator/screens/home/cv_screen.dart';
-import 'package:calculator/screens/home/favorite_screen.dart';
 import 'package:calculator/screens/home/list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -20,21 +21,25 @@ class _BottomNavBarState extends State<BottomNavBar> {
     BottomNavigationBarItem(
         icon: Icon(Icons.home), label: "Home", tooltip: "Home"),
     BottomNavigationBarItem(
-        icon: Icon(Icons.favorite), label: "Favorite", tooltip: "Favorite"),
-    BottomNavigationBarItem(
         icon: Icon(Icons.email), label: "Mail", tooltip: "Mail"),
+    BottomNavigationBarItem(
+        icon: Icon(FontAwesomeIcons.viruses), label: "Covid", tooltip: "Covid"),
     BottomNavigationBarItem(
         icon: Icon(Icons.person), label: "Profile", tooltip: "Profile"),
   ];
-  // "To keep the track of any products you want \n,just tap the favorite icon"
 
-  List<Widget> pages = [ListWork(), Favorite(), Mail(), CvScreen()];
+  List<Widget> pages = [
+    ListWork(),
+    Mail(),
+    CovidInfected(),
+    CvScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[cIndex],
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
+        borderRadius: BorderRadius.all(Radius.circular(14)),
         child: BottomNavigationBar(
           items: items,
           currentIndex: cIndex,

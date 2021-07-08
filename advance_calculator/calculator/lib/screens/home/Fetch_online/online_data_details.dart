@@ -8,7 +8,7 @@ class OnlineDataDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DateTime dateTime = DateTime.now();
-    String dateTimeFormat = DateFormat('MMM dd,hh:mm a').format(dateTime);
+    String dateTimeFormat = DateFormat('MMM dd, h:mm a').format(dateTime);
 
     return Scaffold(
       appBar: AppBar(
@@ -22,17 +22,17 @@ class OnlineDataDetails extends StatelessWidget {
       ),
       body: Container(
         child: Container(
-          padding: EdgeInsets.only(left: 4, right: 4, top: 15),
+          padding: EdgeInsets.only(left: 4, right: 4, top: 11),
           child: Column(
             children: [
               Container(
                 padding: EdgeInsets.only(left: 4),
                 child: ListTile(
                   dense: true,
-                  horizontalTitleGap: 3,
+                  horizontalTitleGap: 5,
                   visualDensity: VisualDensity(horizontal: 0, vertical: -2),
                   leading: CircleAvatar(
-                    radius: 16,
+                    radius: 17,
                     backgroundColor: Colors.blue[700],
                     child: Text(
                       data!['name'].substring(0, 1).toUpperCase(),
@@ -60,65 +60,10 @@ class OnlineDataDetails extends StatelessWidget {
                   ),
                   subtitle: Text(
                     "To me",
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12, color: Colors.grey[900]),
                   ),
                 ),
               ),
-              // Row(
-              //   children: [
-              //     CircleAvatar(
-              //       radius: 15,
-              //       backgroundColor: Colors.blue[700],
-              //       child: Text(
-              //         data!['name'].substring(0, 1).toUpperCase(),
-              //         style: TextStyle(
-              //             color: Colors.grey[300],
-              //             fontWeight: FontWeight.bold,
-              //             fontSize: 12),
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 11,
-              //     ),
-              //     Text(
-              //       data!['name'].substring(0, 9),
-              //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.4),
-              //     ),
-              //     SizedBox(
-              //       width: 6,
-              //     ),
-              //     Text(
-              //       dateTimeFormat.toString(),
-              //       style: TextStyle(fontSize: 11.6),
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 10,
-              // ),
-              // Row(
-              //   children: [
-              //     Align(
-              //       alignment: Alignment.topLeft,
-              //       child: RichText(
-              //         text: TextSpan(
-              //           text: "From : ",
-              //           style: TextStyle(
-              //               color: Colors.black,
-              //               fontWeight: FontWeight.bold,
-              //               fontSize: 10),
-              //           children: [
-              //             TextSpan(
-              //               text: data!['email'],
-              //               style: TextStyle(
-              //                   fontWeight: FontWeight.normal, fontSize: 10),
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
               Container(
                 padding: EdgeInsets.only(left: 23, right: 23),
                 child: Column(
@@ -131,12 +76,13 @@ class OnlineDataDetails extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
-                              fontSize: 10),
+                              fontSize: 10.5),
                           children: [
                             TextSpan(
                               text: data!['email'],
                               style: TextStyle(
-                                  fontWeight: FontWeight.normal, fontSize: 10),
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 10.3),
                             )
                           ],
                         ),
@@ -150,19 +96,20 @@ class OnlineDataDetails extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
-                              fontSize: 10),
+                              fontSize: 10.5),
                           children: [
                             TextSpan(
                               text: "punatish16@gmail.com",
                               style: TextStyle(
-                                  fontWeight: FontWeight.normal, fontSize: 10),
+                                  fontWeight: FontWeight.normal,
+                                  fontSize: 10.3),
                             )
                           ],
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: 12,
+                      height: 13,
                     ),
                     Align(
                       alignment: Alignment.topLeft,
@@ -171,15 +118,18 @@ class OnlineDataDetails extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 12),
+                            fontSize: 12.5),
                       ),
                     ),
                     Align(
                       alignment: Alignment.topLeft,
-                      child: Text(
-                        data!['body'],
-                        style: TextStyle(fontSize: 13),
-                        textAlign: TextAlign.justify,
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          data!['body'],
+                          style: TextStyle(fontSize: 12.3),
+                          textAlign: TextAlign.justify,
+                        ),
                       ),
                     )
                   ],

@@ -107,7 +107,7 @@ class _MailState extends State<Mail> {
                         title: Text(
                           responseData[index]['name'].substring(0, 9),
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15.6),
+                              fontWeight: FontWeight.bold, fontSize: 14.5),
                         ),
                         subtitle: Text(
                           responseData[index]['email'],
