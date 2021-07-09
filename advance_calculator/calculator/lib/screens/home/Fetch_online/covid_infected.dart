@@ -96,6 +96,7 @@ class CovidInfected extends StatelessWidget {
                           elevation: 5.0,
                           child: Container(
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
                                   padding: EdgeInsets.only(
@@ -131,6 +132,9 @@ class CovidInfected extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  textAlign: TextAlign.center,
                                 ),
                                 SizedBox(
                                   height: 7,

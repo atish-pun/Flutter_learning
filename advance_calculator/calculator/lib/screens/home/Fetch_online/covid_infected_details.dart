@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'model/covid_infected_model.dart';
 
@@ -61,10 +62,10 @@ class CovidInfectedDetails extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 15.7),
                             ),
                             Text(
-                              "${covidInfect!.continent ?? " "}",
+                              "${covidInfect!.continent != null ? covidInfect!.continent.toString().substring(10) : "..."}",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14,
+                                  fontSize: 11,
                                   letterSpacing: 0.4),
                             ),
                           ],
@@ -355,7 +356,7 @@ class CovidInfectedDetails extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          height: 12,
+                          height: 17,
                         ),
                         Container(
                           height: 45,
@@ -376,9 +377,21 @@ class CovidInfectedDetails extends StatelessWidget {
                         SizedBox(
                           height: 13,
                         ),
-                        Text(
-                          "Updated on : ${DateFormat('yy MMM dd, h:mm a').format(covidInfect!.updated)}",
-                          style: TextStyle(fontSize: 13),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.wrench,
+                              size: 11,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "${DateFormat('yy MMM dd, h:mm a').format(covidInfect!.updated)}",
+                              style: TextStyle(fontSize: 13),
+                            ),
+                          ],
                         )
                       ],
                     ),
