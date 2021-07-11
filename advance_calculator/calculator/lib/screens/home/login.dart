@@ -119,20 +119,21 @@ class HomeScreen extends StatelessWidget {
                                     (route) => false);
                               } else {
                                 showDialog(
-                                    barrierDismissible: false,
-                                    context: context,
-                                    builder: (_) => AlertDialog(
-                                          actions: [
-                                            ElevatedButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text("Ok"))
-                                          ],
-                                          title: Text("Incorrect Details"),
-                                          content: Text(
-                                              "Please enter the correct email or password"),
-                                        ));
+                                  barrierDismissible: false,
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    actions: [
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text("Ok"))
+                                    ],
+                                    title: Text("Incorrect Details"),
+                                    content: Text(
+                                        "Please enter the correct email or password"),
+                                  ),
+                                );
                               }
                             }),
                         Text(

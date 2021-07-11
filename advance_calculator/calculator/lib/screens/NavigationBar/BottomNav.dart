@@ -1,5 +1,6 @@
 import 'package:calculator/screens/home/Fetch_online/covid_infected.dart';
 import 'package:calculator/screens/home/Fetch_online/fetch_json.dart';
+import 'package:calculator/screens/home/Fetch_online/weatherDetails.dart';
 import 'package:calculator/screens/home/cv_screen.dart';
 import 'package:calculator/screens/home/list_view.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
     BottomNavigationBarItem(
         icon: Icon(Icons.email), label: "Mail", tooltip: "Mail"),
     BottomNavigationBarItem(
+        icon: Icon(
+          FontAwesomeIcons.cloudMoon,
+          size: 26,
+        ),
+        label: "",
+        tooltip: ""),
+    BottomNavigationBarItem(
         icon: Icon(FontAwesomeIcons.viruses), label: "Covid", tooltip: "Covid"),
     BottomNavigationBarItem(
         icon: Icon(Icons.person), label: "Profile", tooltip: "Profile"),
@@ -31,6 +39,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> pages = [
     ListWork(),
     Mail(),
+    WeatherDetails(),
     CovidInfected(),
     CvScreen(),
   ];
@@ -44,10 +53,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
           items: items,
           currentIndex: cIndex,
           selectedItemColor: Colors.blue[800],
-          unselectedFontSize: 13,
-          iconSize: 21,
+          unselectedFontSize: 12,
+          iconSize: 19,
           unselectedItemColor: Colors.grey[600],
-          selectedFontSize: 13,
+          selectedFontSize: 12,
           unselectedLabelStyle: TextStyle(color: Colors.red),
           selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
           type: BottomNavigationBarType.fixed,
