@@ -212,7 +212,7 @@ class WeatherDetails extends StatelessWidget {
                                     : Align(
                                         alignment: Alignment.topLeft,
                                         child: Text(
-                                          "0 \u{2103}",
+                                          "0\u{2103}",
                                           style: TextStyle(
                                               color: Colors.blue[800],
                                               fontSize: 60),

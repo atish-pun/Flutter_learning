@@ -19,28 +19,29 @@ class CovidInfectedDetails extends StatelessWidget {
               fontSize: 19, fontWeight: FontWeight.bold, letterSpacing: 1),
         ),
       ),
-      body: Container(
-        color: Colors.blue[50],
-        child: Column(
-          children: [
-            Center(
-              child: Container(
-                padding: EdgeInsets.only(top: 15, left: 21, right: 21),
-                height: MediaQuery.of(context).size.height * 0.24,
-                child: Hero(
-                  tag: covidInfect!.id.toString(),
-                  child: Image.network(
-                    "${covidInfect!.countryInfo != null ? covidInfect!.countryInfo!.flag != null ? covidInfect!.countryInfo!.flag : "https://static.thenounproject.com/png/340719-200.png" : "https://www.freeiconspng.com/uploads/earth-day-png-14.png"}",
-                    fit: BoxFit.contain,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Container(
+          color: Colors.blue[50],
+          child: Column(
+            children: [
+              Center(
+                child: Container(
+                  padding: EdgeInsets.only(top: 15, left: 21, right: 21),
+                  height: MediaQuery.of(context).size.height * 0.24,
+                  child: Hero(
+                    tag: covidInfect!.id.toString(),
+                    child: Image.network(
+                      "${covidInfect!.countryInfo != null ? covidInfect!.countryInfo!.flag != null ? covidInfect!.countryInfo!.flag : "https://static.thenounproject.com/png/340719-200.png" : "https://www.freeiconspng.com/uploads/earth-day-png-14.png"}",
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Expanded(
-              child: Container(
+              SizedBox(
+                height: 15,
+              ),
+              Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(15),
@@ -397,9 +398,9 @@ class CovidInfectedDetails extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
