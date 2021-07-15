@@ -77,7 +77,7 @@ class CovidInfected extends StatelessWidget {
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width * 0.92,
-                        height: MediaQuery.of(context).size.height * 0.048,
+                        height: MediaQuery.of(context).size.height * 0.05,
                         child: TextFormField(
                           onChanged: (searchCountry) {
                             // controller.country.value = searchCountry;
@@ -121,7 +121,7 @@ class CovidInfected extends StatelessWidget {
                                 borderSide: BorderSide(
                                     color: Colors.blue.shade800, width: 0.6),
                               ),
-                              hintText: "Search country"),
+                              hintText: "Search country..."),
                         ),
                       ),
                       SizedBox(

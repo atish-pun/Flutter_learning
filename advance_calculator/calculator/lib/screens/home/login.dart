@@ -3,13 +3,19 @@ import 'package:calculator/widgets/customebutton.dart';
 import 'package:calculator/widgets/textField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
+import 'Fetch_online/controllers/googleSign_controller.dart';
 import 'list_view.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
   final TextEditingController emailTxt = TextEditingController();
   final TextEditingController passwordTxt = TextEditingController();
+  final GoogleSignController googleSignController =
+      Get.put(GoogleSignController());
 
   @override
   Widget build(BuildContext context) {
@@ -158,6 +164,93 @@ class HomeScreen extends StatelessWidget {
                                     builder: (context) => SignUp()));
                           },
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Divider(
+                                thickness: 0.3,
+                                color: Colors.blue[500],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "Or",
+                              style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: Divider(
+                                thickness: 0.3,
+                                color: Colors.blue[500],
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          width: Get.width * 0.57,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              googleSignController.login();
+                            },
+                            icon: Icon(
+                              FontAwesomeIcons.google,
+                              color: Colors.blue[800],
+                              size: 16,
+                            ),
+                            label: Text(
+                              "Sign in with google",
+                              style: TextStyle(
+                                letterSpacing: 0.4,
+                                fontSize: 13.5,
+                                color: Colors.blue[800],
+                              ),
+                            ),
+                            style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12))),
+                          ),
+                        ),
+                        Container(
+                          width: Get.width * 0.57,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              googleSignController.logout();
+                            },
+                            icon: Icon(
+                              FontAwesomeIcons.google,
+                              color: Colors.blue[800],
+                              size: 16,
+                            ),
+                            label: Text(
+                              "Log out",
+                              style: TextStyle(
+                                letterSpacing: 0.4,
+                                fontSize: 13.5,
+                                color: Colors.blue[800],
+                              ),
+                            ),
+                            style: TextButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12))),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 13,
+                        )
                       ],
                     ),
                   ),

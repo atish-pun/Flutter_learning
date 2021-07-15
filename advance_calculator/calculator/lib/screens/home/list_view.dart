@@ -1,21 +1,24 @@
 import 'package:calculator/models/fruits_model.dart';
+import 'package:calculator/screens/home/Fetch_online/controllers/googleSign_controller.dart';
 import 'package:calculator/screens/home/favorite_screen.dart';
 import 'package:calculator/screens/home/fruits_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'Fruits_list_details.dart';
 
-class ListWork extends StatefulWidget {
-  const ListWork({Key? key}) : super(key: key);
+class ListWork extends StatelessWidget {
+  ListWork({Key? key}) : super(key: key);
+  // final GoogleSignController googleSignController =
+  //     Get.find<GoogleSignController>();
 
-  @override
-  _ListWorkState createState() => _ListWorkState();
-}
-
-class _ListWorkState extends State<ListWork> {
-  var index;
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.blue.shade800,
+      ),
+    );
     // List<String> data = List.generate(10, (index) => card(Child:Text("atish")));
     return Scaffold(
       drawer: Drawer(
@@ -31,10 +34,15 @@ class _ListWorkState extends State<ListWork> {
                             bottom: BorderSide(
                                 color: Colors.grey.shade300, width: 0.3))),
                     currentAccountPicture: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/Atish.jpg"),
+                      backgroundImage: AssetImage("assets/images/Atish.jpg"
+                          // googleSignController
+                          //   .firebaseAuth.currentUser!.photoURL
+                          //   .toString()
+                          ),
                     ),
                     accountName: Text(
                       "Atish pun",
+                      // "${googleSignController.firebaseAuth.currentUser!.displayName}",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           letterSpacing: 0.9,
@@ -42,6 +50,7 @@ class _ListWorkState extends State<ListWork> {
                     ),
                     accountEmail: Text(
                       "punatish16@gmail.com",
+                      // "${googleSignController.firebaseAuth.currentUser!.email}",
                       style: TextStyle(letterSpacing: 0.8, fontSize: 13),
                     )),
               ),
@@ -131,11 +140,30 @@ class _ListWorkState extends State<ListWork> {
                         color: Colors.blue[100],
                         size: 21,
                       ),
-                      title: Text("Help",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blue[100],
-                          )),
+                      title: Text(
+                        "Help",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[100],
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      horizontalTitleGap: -1,
+                      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
+                      leading: Icon(
+                        Icons.logout,
+                        color: Colors.blue[100],
+                        size: 21,
+                      ),
+                      title: Text(
+                        "Log out",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue[100],
+                        ),
+                      ),
+                      // onTap: () => googleSignController.logout(),
                     ),
                   ],
                 ),
