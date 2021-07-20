@@ -1,20 +1,21 @@
 import 'package:calculator/screens/NavigationBar/BottomNav.dart';
+import 'package:calculator/screens/home/Fetch_online/helpers/secureStorage.dart';
 import 'package:calculator/screens/home/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignController extends GetxController {
-  var isLogin = false.obs;
   late GoogleSignIn googleSignIn;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  var isLogin = false.obs;
 
   @override
   void onInit() {
     googleSignIn = GoogleSignIn();
     ever(isLogin, handelLogin);
-
     isLogin.value = firebaseAuth.currentUser != null;
     firebaseAuth.authStateChanges().listen((event) {
       isLogin(event != null);
@@ -50,18 +51,29 @@ class GoogleSignController extends GetxController {
     if (googleSignIn == null) {
       Get.back();
     } else {
-      GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount!.authentication;
-      OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
-          accessToken: googleSignInAuthentication.accessToken,
-          idToken: googleSignInAuthentication.idToken);
-      await firebaseAuth.signInWithCredential(oAuthCredential);
-      Get.back();
+      try {
+        GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount!.authentication;
+        OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
+            accessToken: googleSignInAuthentication.accessToken,
+            idToken: googleSignInAuthentication.idToken);
+
+        await firebaseAuth.signInWithCredential(oAuthCredential);
+        SecureStorage()
+            .writeToken('email', firebaseAuth.currentUser!.email.toString());
+        Get.back();
+        throw PlatformException(code: "Abort");
+      } catch (e) {
+        print(e.toString());
+      }
+
+      throw FirebaseAuthException(code: "CONNECTION DENIED BY USER");
     }
   }
 
   void logout() async {
     await googleSignIn.disconnect();
     await firebaseAuth.signOut();
+    SecureStorage().deleteToken('email');
   }
 }

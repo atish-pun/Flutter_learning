@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
+import '../GoogleMaps.dart';
 import 'model/covid_infected_model.dart';
 
 class CovidInfectedDetails extends StatelessWidget {
-  const CovidInfectedDetails({Key? key, this.covidInfect}) : super(key: key);
+  CovidInfectedDetails({Key? key, this.covidInfect}) : super(key: key);
   final CovidInfect? covidInfect;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      floatingActionButton: Container(
+        width: 44,
+        child: FloatingActionButton(
+          backgroundColor: Colors.blue[700],
+          onPressed: () {
+            Get.to(GoogleMapScreen(covidInfect: covidInfect));
+          },
+          child: Icon(
+            FontAwesomeIcons.locationArrow,
+            size: 16,
+          ),
+        ),
+      ),
       appBar: AppBar(
         elevation: 0.0,
         brightness: Brightness.dark,

@@ -9,8 +9,8 @@ import 'Fruits_list_details.dart';
 
 class ListWork extends StatelessWidget {
   ListWork({Key? key}) : super(key: key);
-  // final GoogleSignController googleSignController =
-  //     Get.find<GoogleSignController>();
+  final GoogleSignController googleSignController =
+      Get.find<GoogleSignController>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,30 +29,31 @@ class ListWork extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 9),
                 child: UserAccountsDrawerHeader(
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                color: Colors.grey.shade300, width: 0.3))),
-                    currentAccountPicture: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/Atish.jpg"
-                          // googleSignController
-                          //   .firebaseAuth.currentUser!.photoURL
-                          //   .toString()
-                          ),
-                    ),
-                    accountName: Text(
-                      "Atish pun",
-                      // "${googleSignController.firebaseAuth.currentUser!.displayName}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.9,
-                          fontSize: 15),
-                    ),
-                    accountEmail: Text(
-                      "punatish16@gmail.com",
-                      // "${googleSignController.firebaseAuth.currentUser!.email}",
-                      style: TextStyle(letterSpacing: 0.8, fontSize: 13),
-                    )),
+                  decoration: BoxDecoration(
+                      border: Border(
+                          bottom: BorderSide(
+                              color: Colors.grey.shade300, width: 0.3))),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage(googleSignController
+                                .firebaseAuth.currentUser !=
+                            null
+                        ? googleSignController
+                            .firebaseAuth.currentUser!.photoURL
+                            .toString()
+                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0w-e7TtEvdRf9nkID8bQw40NxvYtGcjSNmylL4ElvAAfHjrXs5QD8xuQ-nCpckYqkTSKSP9tXElc&usqp=CAU"),
+                  ),
+                  accountName: Text(
+                    "${googleSignController.firebaseAuth.currentUser != null ? googleSignController.firebaseAuth.currentUser!.displayName : "..."}",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 0.9,
+                        fontSize: 15),
+                  ),
+                  accountEmail: Text(
+                    "${googleSignController.firebaseAuth.currentUser != null ? googleSignController.firebaseAuth.currentUser!.email : "..."}",
+                    style: TextStyle(letterSpacing: 0.8, fontSize: 13),
+                  ),
+                ),
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 4),
@@ -163,7 +164,7 @@ class ListWork extends StatelessWidget {
                           color: Colors.blue[100],
                         ),
                       ),
-                      // onTap: () => googleSignController.logout(),
+                      onTap: () => googleSignController.logout(),
                     ),
                   ],
                 ),
