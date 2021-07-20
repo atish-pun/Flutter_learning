@@ -66,8 +66,6 @@ class GoogleSignController extends GetxController {
       } catch (e) {
         print(e.toString());
       }
-
-      throw FirebaseAuthException(code: "CONNECTION DENIED BY USER");
     }
   }
 
