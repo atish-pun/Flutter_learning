@@ -1,3 +1,4 @@
+import 'package:calculator/screens/NavigationBar/BottomNav.dart';
 import 'package:calculator/screens/home/Fetch_online/helpers/secureStorage.dart';
 import 'package:calculator/screens/home/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -27,7 +28,7 @@ class GoogleSignController extends GetxController {
 
   void handelLogin(isLogin) async {
     if (isLogin) {
-      Get.offAll(() => WeatherDetails());
+      Get.offAll(() => BottomNavBar());
     } else {
       Get.offAll(() => HomeScreen());
     }
@@ -74,10 +75,6 @@ class GoogleSignController extends GetxController {
   void logout() async {
     await googleSignIn.disconnect();
     await firebaseAuth.signOut();
-<<<<<<< HEAD
-    // SecureStorage().removeToken('uid');
-=======
     SecureStorage().deleteToken('email');
->>>>>>> 472bf84
   }
 }

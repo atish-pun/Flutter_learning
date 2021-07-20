@@ -29,28 +29,6 @@ class ListWork extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 9),
                 child: UserAccountsDrawerHeader(
-<<<<<<< HEAD
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                color: Colors.grey.shade300, width: 0.3))),
-                    // currentAccountPicture: CircleAvatar(
-                    //   backgroundImage: NetworkImage(googleSignController
-                    //       .firebaseAuth.currentUser!.photoURL
-                    //       .toString()),
-                    // ),
-                    accountName: Text(
-                      "${googleSignController.firebaseAuth.currentUser?.displayName}",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.9,
-                          fontSize: 15),
-                    ),
-                    accountEmail: Text(
-                      "${googleSignController.firebaseAuth.currentUser?.email}",
-                      style: TextStyle(letterSpacing: 0.8, fontSize: 13),
-                    )),
-=======
                   decoration: BoxDecoration(
                       border: Border(
                           bottom: BorderSide(
@@ -76,7 +54,6 @@ class ListWork extends StatelessWidget {
                     style: TextStyle(letterSpacing: 0.8, fontSize: 13),
                   ),
                 ),
->>>>>>> 472bf84
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 4),
