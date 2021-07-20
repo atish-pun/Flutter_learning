@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:calculator/screens/home/Fetch_online/model/covid_infected_model.dart';
 import 'package:calculator/screens/home/Fetch_online/model/covid_myths_model.dart';
+import 'package:calculator/screens/home/Fetch_online/model/login_model.dart';
 import 'package:calculator/screens/home/Fetch_online/model/weather_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -48,6 +52,27 @@ class ServicesApi {
       } else {
         Fluttertoast.showToast(msg: "Please enter the correct city name");
         return Weather();
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  static Future<LoginModel?> loginModel(
+      {String? email, String? password}) async {
+    try {
+      Map<String, dynamic> data = {"emailAddress": email, "Password": password};
+      var url = Uri.parse("https://cinemaera.lalpun.com.np/ERA/api/login.php");
+      var response = await http.post(url,
+          body: jsonEncode(data),
+          headers: {HttpHeaders.contentTypeHeader: "application/json"});
+      if (response.statusCode == 200) {
+        print("connected");
+        print(response.body);
+
+        return loginModelFromJson(response.body);
+      } else {
+        return null;
       }
     } catch (e) {
       print(e.toString());

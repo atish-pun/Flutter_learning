@@ -9,6 +9,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:get/get.dart';
 
+final GoogleSignController googleSignController =
+    Get.put(GoogleSignController());
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -37,12 +40,22 @@ class Calculator extends StatelessWidget {
         primaryColorDark: Colors.blue[800],
       ),
       debugShowCheckedModeBanner: false,
+<<<<<<< HEAD
       home: HomeScreen(),
       // initialRoute: "/",
       // getPages: [
       //   GetPage(name: "/", page: () => BottomNavBar()),
       //   GetPage(name: "/Login", page: () => HomeScreen()),
       // ],
+=======
+      home: googleSignController.isLogin.value ? BottomNavBar() : HomeScreen(),
+
+      initialRoute: "/",
+      getPages: [
+        GetPage(name: "/", page: () => BottomNavBar()),
+        GetPage(name: "/Login", page: () => HomeScreen()),
+      ],
+>>>>>>> 472bf84
       // initialRoute: "/home_screen",
       // routes: <String, WidgetBuilder>{
       //   "/": (context) => BottomNavBar(),
