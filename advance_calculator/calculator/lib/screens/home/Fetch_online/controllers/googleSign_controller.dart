@@ -1,10 +1,4 @@
-import 'package:calculator/screens/NavigationBar/BottomNav.dart';
 import 'package:calculator/screens/home/Fetch_online/helpers/secureStorage.dart';
-<<<<<<< HEAD
-import 'package:calculator/screens/home/Fetch_online/model/weather_model.dart';
-import 'package:calculator/screens/home/cv_screen.dart';
-=======
->>>>>>> 472bf84
 import 'package:calculator/screens/home/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +9,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../weatherDetails.dart';
 
 class GoogleSignController extends GetxController {
-<<<<<<< HEAD
-  var isLogin = false.obs;
-
-=======
->>>>>>> 472bf84
   late GoogleSignIn googleSignIn;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   var isLogin = false.obs;
@@ -64,18 +53,6 @@ class GoogleSignController extends GetxController {
     if (googleSignIn == null) {
       Get.back();
     } else {
-<<<<<<< HEAD
-      GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount!.authentication;
-      OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
-          accessToken: googleSignInAuthentication.accessToken,
-          idToken: googleSignInAuthentication.idToken);
-      await firebaseAuth.signInWithCredential(oAuthCredential);
-      // SecureStorage().setToken('uid', firebaseAuth.currentUser!.uid);
-      // SecureStorage().getToken('uid').then((value) => value);
-
-      Get.back();
-=======
       try {
         GoogleSignInAuthentication googleSignInAuthentication =
             await googleSignInAccount!.authentication;
@@ -91,7 +68,6 @@ class GoogleSignController extends GetxController {
       } catch (e) {
         print(e.toString());
       }
->>>>>>> 472bf84
     }
   }
 

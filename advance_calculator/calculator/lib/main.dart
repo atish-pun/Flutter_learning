@@ -1,12 +1,10 @@
 import 'package:calculator/screens/NavigationBar/BottomNav.dart';
 import 'package:calculator/screens/home/Fetch_online/controllers/googleSign_controller.dart';
 import 'package:calculator/screens/home/Fetch_online/controllers/push_notification_controller.dart';
-import 'package:calculator/screens/home/Fetch_online/helpers/secureStorage.dart';
 import 'package:calculator/screens/home/login.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 import 'package:get/get.dart';
 
 final GoogleSignController googleSignController =
@@ -17,6 +15,7 @@ void main() async {
   await Firebase.initializeApp();
   await dotenv.load(fileName: "assets/.env");
   PushNotificationController().intialize();
+
   runApp(MyApp());
 }
 
@@ -40,14 +39,6 @@ class Calculator extends StatelessWidget {
         primaryColorDark: Colors.blue[800],
       ),
       debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
-      home: HomeScreen(),
-      // initialRoute: "/",
-      // getPages: [
-      //   GetPage(name: "/", page: () => BottomNavBar()),
-      //   GetPage(name: "/Login", page: () => HomeScreen()),
-      // ],
-=======
       home: googleSignController.isLogin.value ? BottomNavBar() : HomeScreen(),
 
       initialRoute: "/",
@@ -55,7 +46,6 @@ class Calculator extends StatelessWidget {
         GetPage(name: "/", page: () => BottomNavBar()),
         GetPage(name: "/Login", page: () => HomeScreen()),
       ],
->>>>>>> 472bf84
       // initialRoute: "/home_screen",
       // routes: <String, WidgetBuilder>{
       //   "/": (context) => BottomNavBar(),
