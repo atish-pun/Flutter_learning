@@ -9,9 +9,7 @@ class CovidInfectedControl extends GetxController {
   List<CovidInfect>? covidInfect = <CovidInfect>[];
   List<CovidInfect>? searchList = <CovidInfect>[];
   Completer<GoogleMapController> controller = Completer();
-
   // var country = "".obs;
-
   bool isLoading = true;
 
   @override
@@ -55,7 +53,8 @@ class CovidInfectedControl extends GetxController {
   }
 
   final CameraPosition kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(
+        CovidInfect().countryInfo!.lat!, CovidInfect().countryInfo!.long!),
     zoom: 14.4746,
   );
 

@@ -28,7 +28,7 @@ class CovidInfect {
     this.testsPerOneMillion,
     this.continent,
     this.countryInfo,
-    required this.updated,
+    this.updated,
     this.v,
   });
 
@@ -48,7 +48,7 @@ class CovidInfect {
   double? testsPerOneMillion;
   Continent? continent;
   CountryInfo? countryInfo;
-  DateTime updated;
+  DateTime? updated;
   int? v;
 
   factory CovidInfect.fromJson(Map<String, dynamic> json) => CovidInfect(
@@ -94,7 +94,7 @@ class CovidInfect {
         "continent":
             continent == null ? null : continentValues.reverse[continent],
         "countryInfo": countryInfo == null ? null : countryInfo!.toJson(),
-        "updated": updated.toIso8601String(),
+        "updated": updated!.toIso8601String(),
         "__v": v,
       };
 }

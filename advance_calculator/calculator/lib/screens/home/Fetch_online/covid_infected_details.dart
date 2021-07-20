@@ -406,7 +406,7 @@ class CovidInfectedDetails extends StatelessWidget {
                               width: 5,
                             ),
                             Text(
-                              "${DateFormat('yy MMM dd, h:mm a').format(covidInfect!.updated)}",
+                              "${DateFormat('yy MMM dd, h:mm a').format(covidInfect!.updated!)}",
                               style: TextStyle(fontSize: 13),
                             ),
                           ],
