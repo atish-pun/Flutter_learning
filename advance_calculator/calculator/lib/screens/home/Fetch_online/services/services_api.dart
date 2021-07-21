@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:calculator/screens/home/Fetch_online/helpers/ApiClients.dart';
 import 'package:calculator/screens/home/Fetch_online/model/covid_infected_model.dart';
 import 'package:calculator/screens/home/Fetch_online/model/covid_myths_model.dart';
 import 'package:calculator/screens/home/Fetch_online/model/login_model.dart';
@@ -61,15 +61,20 @@ class ServicesApi {
   static Future<LoginModel?> loginModel(
       {String? email, String? password}) async {
     try {
-      Map<String, dynamic> data = {"emailAddress": email, "Password": password};
-      var url = Uri.parse("https://cinemaera.lalpun.com.np/ERA/api/login.php");
-      var response = await http.post(url,
-          body: jsonEncode(data),
-          headers: {HttpHeaders.contentTypeHeader: "application/json"});
-      if (response.statusCode == 200) {
-        print("connected");
-        print(response.body);
+      Map<String, dynamic> data = {
+        "emailAddress": email,
+        "Password": password,
+      };
+      var url = Uri.parse(ApiClients.baseUrl + ApiClients.login);
+      var response = await http.post(
+        url,
+        body: data,
+        headers: {
+          HttpHeaders.contentTypeHeader: "application/x-www-form-urlencoded"
+        },
+      );
 
+      if (response.statusCode == 200) {
         return loginModelFromJson(response.body);
       } else {
         return null;

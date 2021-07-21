@@ -53,8 +53,7 @@ class CovidInfectedControl extends GetxController {
   }
 
   final CameraPosition kGooglePlex = CameraPosition(
-    target: LatLng(
-        CovidInfect().countryInfo!.lat!, CovidInfect().countryInfo!.long!),
+    target: LatLng(37.43296265331129, -122.08832357078792),
     zoom: 14.4746,
   );
 

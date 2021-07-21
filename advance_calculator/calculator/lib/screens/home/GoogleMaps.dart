@@ -26,6 +26,8 @@ class GoogleMapScreen extends StatelessWidget {
           child: GoogleMap(
             compassEnabled: true,
             mapType: MapType.satellite,
+            myLocationEnabled: true,
+            indoorViewEnabled: true,
             initialCameraPosition: covidInfectedControl.kGooglePlex,
             onMapCreated: (GoogleMapController controller) {
               covidInfectedControl.controller.complete(controller);

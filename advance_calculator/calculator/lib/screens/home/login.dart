@@ -228,6 +228,31 @@ class HomeScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(12))),
                             ),
                           ),
+                          Container(
+                            width: Get.width * 0.59,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                googleSignController.logout();
+                              },
+                              icon: Icon(
+                                FontAwesomeIcons.google,
+                                color: Colors.blue[800],
+                                size: 16,
+                              ),
+                              label: Text(
+                                "Sign in with google",
+                                style: TextStyle(
+                                  letterSpacing: 0.4,
+                                  fontSize: 13.5,
+                                  color: Colors.blue[800],
+                                ),
+                              ),
+                              style: TextButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12))),
+                            ),
+                          ),
                           SizedBox(
                             height: 13,
                           )

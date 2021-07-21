@@ -5,6 +5,7 @@ import 'package:calculator/screens/home/fruits_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'Fetch_online/controllers/login_controller.dart';
 import 'Fruits_list_details.dart';
 
 class ListWork extends StatelessWidget {
@@ -150,22 +151,22 @@ class ListWork extends StatelessWidget {
                       ),
                     ),
                     ListTile(
-                      horizontalTitleGap: -1,
-                      visualDensity: VisualDensity(horizontal: 0, vertical: -4),
-                      leading: Icon(
-                        Icons.logout,
-                        color: Colors.blue[100],
-                        size: 21,
-                      ),
-                      title: Text(
-                        "Log out",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                        horizontalTitleGap: -1,
+                        visualDensity:
+                            VisualDensity(horizontal: 0, vertical: -4),
+                        leading: Icon(
+                          Icons.logout,
                           color: Colors.blue[100],
+                          size: 21,
                         ),
-                      ),
-                      onTap: () => googleSignController.logout(),
-                    ),
+                        title: Text(
+                          "Log out",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue[100],
+                          ),
+                        ),
+                        onTap: () => googleSignController.logout()),
                   ],
                 ),
               ),
